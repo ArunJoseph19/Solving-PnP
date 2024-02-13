@@ -70,15 +70,22 @@ for i in list(coords.keys()):
     translation_matrix = -(np.matmul(np.linalg.inv(rotation_matrix), homography_matrix_normalised[:, 2:3]))
     #End of Tajmul's code
         
-    #Doubt here to be clarified
-    H = np.hstack([rotation_matrix, translation_matrix])
-    H = np.vstack([H,np.array([[0., 0., 0., 1.]])])
-    
     W = np.array([4.5, 19.7, 0.0, 1]) #World Point we wanna find the coords for
     
+    #Doubt here to be clarified
+    H = np.hstack([rotation_matrix, translation_matrix])
+    
+    P_mtx = matrix_camera.dot(H)
+    Image_Point_OG = P_mtx.dot(W)
+    Image_Point_OG = Image_Point_OG/Image_Point_OG[2]
+    print("Original Value: {}".format(image_points_2D[2]))
+    print("Recalculated: {}".format(Image_Point_OG[:2]))
+     
+    H = np.vstack([H,np.array([[0., 0., 0., 1.]])])
     result_matrix = np.dot(H,W)
     
     output_points[i] = result_matrix
+    print('\n')
     
 i = 'Images/1_B.jpg'
 j = 'Images/2_B.jpg'

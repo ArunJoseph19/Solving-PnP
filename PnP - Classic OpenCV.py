@@ -64,6 +64,8 @@ for i in list(coords.keys()):
     #This below variable will give the point as in image_points_2D
     Image_Point_OG = P_mtx.dot(W)
     Image_Point_OG = Image_Point_OG/Image_Point_OG[2]
+    print("Original Value: {}".format(image_points_2D[2]))
+    print("Recalculated: {}".format(Image_Point_OG[:2]))
 
     #R|t - Extrinsic Matrix * W
     Rt = np.append(Rt, np.array([0,0,0,1]))
@@ -71,6 +73,7 @@ for i in list(coords.keys()):
     result_matrix = np.dot(Rt,W)
     
     output_points[i] = result_matrix
+    print('\n')
 
 i = 'Images/1_B.jpg'
 j = 'Images/2_B.jpg'
