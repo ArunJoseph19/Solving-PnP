@@ -140,5 +140,28 @@ print(P_mtx)
 '''
 #distance = (24  * 596 / 596 * pixel size (in um))
 
+'''
+#print( np.linalg.inv(exts[0])@(exts[2]@fig_3d))
+#R2 * (-R1.t()*tvec1) + tvec2 
+#tvec1_2 = output_points[j][0] * (-output_points[i][0].T * output_points[i][1] ) + output_points[j][1]
 
+i = 'Images/Centre Dining Table/2.jpg' #0
+j = 'Images/Centre Dining Table/3.jpg' #1
+k = 'Images/Centre Dining Table/4.jpg' #2
+l = 'Images/Centre Dining Table/5.jpg' #3
+m = 'Images/Centre Dining Table/6.jpg' #4
+
+
+for i in range(0,4):
+    # print(hs[i])
+    print(   np.linalg.inv(rs[i])@(-rs[i+1]@ts[i+1]) + ts[i])
+    # print(np.matmul(rs[i], (-np.matmul(rs[i+1], ts[i+1])))) + ts[i]
+
+# index = 2
+# corner = 0
+# coords[coords_list[index]][corner].append(1)
+# coords_vector = np.array(np.matmul(np.linalg.inv(matrix_camera),coords[coords_list[index]][corner]))
+# wp = np.matmul(np.linalg.inv(rs[index]), coords_vector.T) + ts[index].T
+# print(wp)
+'''
 

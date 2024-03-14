@@ -38,7 +38,6 @@ rs = {}
 output_points = {}
 
 from scipy.linalg import sqrtm, inv
-
 def sym(w):
     return w.dot(inv(sqrtm(w.T.dot(w))))
 
@@ -101,7 +100,7 @@ for i in coords_list:
     
     t_coplanar = -(np.matmul(np.linalg.inv(r_coplanar), homography_matrix_normalised[:, 2:3]))
     
-    t_coplanar = homography_matrix_normalised[2]
+    #t_coplanar = homography_matrix_normalised[2]
     
     #Sanity Check
     print(np.dot(r1.flatten(),r2.flatten()))
@@ -119,7 +118,7 @@ for i in coords_list:
     #r_ortho[2] = np.transpose(np.cross(np.transpose(r_ortho[0]), np.transpose(r_ortho[1])))
     
     t_ortho = -(np.matmul(np.linalg.inv(r_ortho), homography_matrix_normalised[:, 2:3]))
-    #t_ortho = homography_matrix_normalised[2]
+        #t_ortho = homography_matrix_normalised[2]
     #t_ortho = t_ortho.reshape(-1, 1)
     
     #Sanity Check
